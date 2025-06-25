@@ -11,7 +11,7 @@
 <body>
     <h1>Kalkulator Sederhana</h1>
     <a href="{{ route('tambah') }}">Tambah</a>
-    <a href="">Kurang</a>
+    <a href="{{ route('kurang') }}">Kurang</a>
     <a href="">Kali</a>
     <a href="">Bagi</a>
 </body>
