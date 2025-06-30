@@ -6,15 +6,15 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ $title }}</h3>
                     <div class="mb-3" align="right">
-                        <a href="{{ route('service.create') }}" class="btn btn-primary">Tambah Service</a>
+                        <a href="{{ route('customer.create') }}" class="btn btn-primary">Tambah Customer</a>
                     </div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Servis</th>
-                                <th>Harga</th>
-                                <th>Deskripsi</th>
+                                <th>Nama</th>
+                                <th>Telp</th>
+                                <th>Alamat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -22,12 +22,12 @@
                             @foreach ($datas as $index => $data)
                                 <tr>
                                     <td>{{ $index += 1 }}</td>
-                                    <td>{{ $data->service_name }}</td>
-                                    <td>{{ number_format($data->price) }}</td>
-                                    <td>{{ $data->description }}</td>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->phone }}</td>
+                                    <td>{{ $data->address }}</td>
                                     <td>
-                                        <a href="{{ route('service.edit', $data->id) }}" class="btn btn-warning">Edit</a>
-                                        <form action="{{ route('service.destroy', $data->id) }}" method="post"
+                                        <a href="{{ route('customer.edit', $data->id) }}" class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('customer.destroy', $data->id) }}" method="post"
                                             style="display: inline">
                                             @csrf
                                             @method('DELETE')

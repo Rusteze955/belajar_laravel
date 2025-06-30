@@ -12,7 +12,9 @@ Route::post('actionLogin', [App\Http\Controllers\LoginController::class, 'action
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('dashboard', App\Http\Controllers\DashboardController::class);
-    Route::get('service', [App\Http\Controllers\DashboardController::class, 'indexService']);
+    Route::resource('level', App\Http\Controllers\LevelController::class);
+    Route::resource('service', App\Http\Controllers\ServiceController::class);
+    Route::resource('customer', App\Http\Controllers\CustomerController::class);
     Route::get('insert/service', [App\Http\Controllers\DashboardController::class, 'showInsService']);
 });
 
