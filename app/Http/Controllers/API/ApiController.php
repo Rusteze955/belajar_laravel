@@ -20,7 +20,7 @@ class ApiController extends Controller
     public function editUser($id)
     {
         $user = User::findOrFail($id);
-        return response()->json(['status' => 'success', 'messasge' => 'Request success', 'data' => $user]);
+        return response()->json(['status' => 'success', 'message' => 'Request success', 'data' => $user]);
     }
 
     public function storeUser(Request $request)
@@ -29,7 +29,7 @@ class ApiController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8',
+                'password' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -38,7 +38,7 @@ class ApiController extends Controller
             $users = User::create($request->all());
             return response()->json(['data' => $users, 'message' => 'Request success'], 201);
         } catch (\Throwable $th) {
-            return response()->json(['status' => 'error', 'messasge' => 'Request failed', 'errors' => $th->getMessage()], 500);
+            return response()->json(['status' => 'error', 'message' => 'Request failed', 'errors' => $th->getMessage()], 500);
         }
     }
 
@@ -49,7 +49,7 @@ class ApiController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:8',
+                'password' => 'required',
             ]);
             if ($validator->fails()) {
                 return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
@@ -61,9 +61,9 @@ class ApiController extends Controller
                 $user->password = Hash::make($request->password);
             }
             $user->save();
-            return response()->json(['status' => 'success', 'messasge' => 'Request update success', 'data' => $user]);
+            return response()->json(['status' => 'success', 'message' => 'Request update success', 'data' => $user]);
         } catch (\Throwable $th) {
-            return response()->json(['status' => 'success', 'messasge' => 'Request failed', 'errors' => $th->getMessage()], 500);
+            return response()->json(['status' => 'success', 'message' => 'Request failed', 'errors' => $th->getMessage()], 500);
         }
     }
 
@@ -72,7 +72,7 @@ class ApiController extends Controller
         try {
             $user = User::findOrFail($id);
             $user->delete();
-            return response()->json(['status' => 'success', 'messasge' => 'Request delete success']);
+            return response()->json(['status' => 'success', 'message' => 'Request delete success']);
         } catch (\Throwable $th) {
             return response()->json(['status' => 'success', 'error' => 'Request failed', 'errors' => $th->getMessage()], 500);
         }
