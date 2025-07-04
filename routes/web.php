@@ -12,10 +12,13 @@ Route::post('actionLogin', [App\Http\Controllers\LoginController::class, 'action
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('dashboard', App\Http\Controllers\DashboardController::class);
+    Route::resource('user', App\Http\Controllers\UserController::class);
+    Route::resource('trans', App\Http\Controllers\TransOrderController::class);
     Route::resource('level', App\Http\Controllers\LevelController::class);
     Route::resource('service', App\Http\Controllers\ServiceController::class);
     Route::resource('customer', App\Http\Controllers\CustomerController::class);
-    Route::get('insert/service', [App\Http\Controllers\DashboardController::class, 'showInsService']);
+    Route::get('print_struk/{id}', [App\Http\Controllers\TransOrderController::class, 'printStruk'])->name('print_struk');
+    Route::post('trans/{id}/snap', [App\Http\Controllers\TransOrderController::class, 'snap'])->name('trans.snap');
 });
 
 // get: hanya bisa melihat dan membaca

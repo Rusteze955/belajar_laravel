@@ -123,6 +123,17 @@
 
         </div>
     </main><!-- End #main -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('img/bg-laundry.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+
+        }
+    </style>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
