@@ -33,6 +33,7 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         Levels::create($request->all());
+        alert()->success('Tambah Berhasil', 'Data Berhasil Ditambah');
         return redirect()->to('level')->with('success', 'Data Berhasil Ditambahkan');
     }
 
@@ -64,6 +65,7 @@ class LevelController extends Controller
         $level = Levels::find($id);
         $level->name = $request->name;
         $level->save();
+        alert()->success('Ubah Berhasil', 'Data Berhasil Diubah');
         return redirect()->to('level')->with('success', 'Data Berhasil Diubah');
     }
 
@@ -74,6 +76,7 @@ class LevelController extends Controller
     {
         $level = Levels::find($id);
         $level->delete();
+        alert()->success('Hapus Berhasil', 'Data Berhasil Dihapus');
         return redirect()->to('level')->with('success', 'Data Berhasil Diubah');
     }
 }

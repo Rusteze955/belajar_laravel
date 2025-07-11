@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- ======= Header ======= -->
     @include('inc.header');
 
@@ -50,6 +51,8 @@
             class="bi bi-arrow-up-short"></i></a>
 
     @include('inc.js');
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
     <script>
         // var, let, const
         // var : ketika nilainya tidak ada, maka tidak ada error

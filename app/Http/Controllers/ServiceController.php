@@ -33,6 +33,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         TypeOfServices::create($request->all());
+        alert()->success('Tambah Berhasil', 'Data Berhasil Ditambah');
         return redirect()->to('service')->with('success', 'Data Berhasil Ditambahkan');
     }
 
@@ -66,6 +67,7 @@ class ServiceController extends Controller
         $service->price = $request->price;
         $service->description = $request->description;
         $service->save();
+        alert()->success('Ubah Berhasil', 'Data Berhasil Diubah');
         return redirect()->to('service')->with('success', 'Data Berhasil Diubah');
     }
 
@@ -76,6 +78,7 @@ class ServiceController extends Controller
     {
         $service = TypeOfServices::find($id);
         $service->delete();
+        alert()->success('Hapus Berhasil', 'Data Berhasil Dihapus');
         return redirect()->to('service')->with('success', 'Data Berhasil Dihapus');
     }
 }

@@ -33,6 +33,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         Customers::create($request->all());
+        alert()->success('Tambah Berhasil', 'Data Berhasil Ditambah');
         return redirect()->to('customer')->with('success', 'Data Berhasil Ditambahkan');
     }
 
@@ -66,6 +67,7 @@ class CustomerController extends Controller
         $customer->phone = $request->phone;
         $customer->address = $request->address;
         $customer->save();
+        alert()->success('Ubah Berhasil', 'Data Berhasil Diubah');
         return redirect()->to('customer')->with('success', 'Data Berhasil Diubah');
     }
 
@@ -76,6 +78,7 @@ class CustomerController extends Controller
     {
         $customer = Customers::find($id);
         $customer->delete();
+        alert()->success('Hapus Berhasil', 'Data Berhasil Dihapus');
         return redirect()->to('customer')->with('success', 'Data Berhasil Dihapus');
     }
 }

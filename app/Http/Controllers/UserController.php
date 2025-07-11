@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -33,7 +34,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->to('user')->with('success', 'Data Berhasil Ditambahkan');
+        // toast('Data Berhasil Ditambah', 'success');
+        alert()->success('Tambah Berhasil', 'Data Berhasil Ditambah');
+        return redirect()->to('user')->with('success', 'Data Berhasil Ditambah');
     }
 
     /**
@@ -68,6 +71,8 @@ class UserController extends Controller
             $user->password = $request->password;
         }
         $user->save();
+        // toast('Data Berhasil Diubah', 'success');
+        alert()->success('Ubah Berhasil', 'Data Berhasil Diubah');
         return redirect()->to('user')->with('success', 'Data Berhasil Diubah');
     }
 
@@ -78,6 +83,8 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect()->to('user')->with('success', 'Data Berhasil Diubah');
+        // toast('Data Berhasil Dihapus', 'success');
+        alert()->success('Hapus Berhasil', 'Data Berhasil Dihapus');
+        return redirect()->to('user')->with('success', 'Data Berhasil Dihapus');
     }
 }

@@ -73,7 +73,7 @@ class TransOrderController extends Controller
                 'subtotal' => $request->total[$key]
             ]);
         }
-
+        alert()->success('Tambah Berhasil', 'Data Berhasil Ditambah');
         return redirect()->route('trans.index')->with('status', 'berhsil');
     }
 
@@ -116,6 +116,7 @@ class TransOrderController extends Controller
         $transOrder->order_pay = $request->order_pay;
         $transOrder->order_change = $request->order_change;
         $transOrder->save();
+        alert()->success('Ubah Berhasil', 'Data Berhasil Diubah');
         return redirect()->to('trans')->with('success', 'Data Berhasil Diubah');
     }
 
@@ -126,7 +127,8 @@ class TransOrderController extends Controller
     {
         $user = TransOrders::find($id);
         $user->delete();
-        return redirect()->to('trans')->with('success', 'Data Berhasil Diubah');
+        alert()->success('Hapus Berhasil', 'Data Berhasil Ditambah');
+        return redirect()->to('trans')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function printStruk(string $id)

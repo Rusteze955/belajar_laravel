@@ -15,10 +15,10 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         // INSERT INTO users () VALUES ()
-        uSER::create([
-            'name' => 'Abdullah',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('12345')
+        User::create([
+            'name' => 'Abdullah123',
+            'email' => 'admin123@gmail.com',
+            'password' => Hash::make('12345678')
         ]);
     }
 }
