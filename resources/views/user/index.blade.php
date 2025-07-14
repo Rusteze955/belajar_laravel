@@ -14,6 +14,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>Level</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
